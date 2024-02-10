@@ -33,12 +33,21 @@ namespace LeaveApp
             leaveDataSet = (LeaveDataSet) FindResource("leaveDataSet");
 
             workoutsView = ((CollectionViewSource) FindResource("workoutsViewSource")).View;
+
+            LoadFromFile();
         }
 
     
         public void RefreshBindings()
         {
- 
+            if (leaveDataSet.Users.Count > 0)
+            {
+                UsersGrid.DataContext = leaveDataSet.Users.First();
+            }
+            else
+            {
+                MessageBox.Show("No users found in the dataset.");
+            }
         }
 
         private void LoadFromDatabase()
@@ -63,15 +72,6 @@ namespace LeaveApp
 
                 dataManager.LoadData(leaveDataSet);
 
-                if (leaveDataSet.Users.Count > 0)
-                {
-                    UsersGrid.DataContext = leaveDataSet.Users.First();
-                }
-                else
-                {
-                    MessageBox.Show("No users found in the dataset.");
-                }
-
                 RefreshBindings();
             }
             catch (SqlException ex) {
@@ -86,7 +86,52 @@ namespace LeaveApp
             }
         }
 
+        private void LoadFromFile() {
+            try
+            {
+                leaveDataSet.Clear();
+
+                Cursor = Cursors.Wait;
+
+                leaveDataSet.ReadXml("leave.xml");
+
+                RefreshBindings();
+            } catch (System.Exception ex)
+            {
+                MessageBox.Show(ex.ToString(), "Fehler", MessageBoxButton.OK, MessageBoxImage.Error);
+            } finally
+            {
+                Cursor = Cursors.Arrow;
+            }
+        }
+
+        private void SaveToFile(bool notifyUser = true) {
+            try
+            {
+                leaveDataSet.WriteXml("leave.xml", XmlWriteMode.DiffGram);
+
+                if (notifyUser)
+                {
+                    MessageBox.Show("Daten erfolgreich gespeichert.", "Speichern", MessageBoxButton.OK, MessageBoxImage.Information);
+                }
+            } catch (System.Exception ex)
+            {
+                MessageBox.Show(ex.ToString(), "Fehler", MessageBoxButton.OK, MessageBoxImage.Error);
+            } finally
+            {
+                Cursor = Cursors.Arrow;
+            }
+        }
+
         // Event handlers
+
+        private void LoadFromFile_Click(object sender, RoutedEventArgs e) {
+            LoadFromFile();
+        }
+
+        private void SaveToFile_Click(object sender, RoutedEventArgs e) {
+            SaveToFile();
+        }
 
         private void LoadFromDatabase_Click(object sender, RoutedEventArgs e)
         {
@@ -98,5 +143,9 @@ namespace LeaveApp
             Close();
         }
 
+        private void Window_Closing(object sender, CancelEventArgs e)
+        {
+            SaveToFile(false);
+        }
     }
 }
