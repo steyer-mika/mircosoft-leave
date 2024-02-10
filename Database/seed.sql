@@ -1,7 +1,11 @@
 ﻿USE leave;
 
+DELETE FROM Users;
+
 INSERT INTO Users (UserName, Email, PasswordHash, DateOfBirth, Gender, Height, Weight)
-VALUES ('Steyer Mika', 'mikasteyer9@gmail.com', 'AdminAdmin1!', '2005-05-11', 'Male', 1.85, 65);
+VALUES ('Steyer Mika', 'mikasteyer9@gmail.com', 'AdminAdmin1!', '2005-05-11', 'Männlich', 1.85, 65);
+
+DELETE FROM Exercises;
 
 INSERT INTO Exercises (ExerciseName, Description)
 VALUES 
