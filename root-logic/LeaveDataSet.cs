@@ -3,4 +3,5 @@
 }
 
 namespace root_logic
-{ }
+{
+}

@@ -1,5 +1,6 @@
 ﻿-- Create the Users table to store information about users
 
+DROP TABLE IF EXISTS UserExercises;
 DROP TABLE IF EXISTS Exercises;
 DROP TABLE IF EXISTS Workouts;
 DROP TABLE IF EXISTS Users;
@@ -35,20 +36,18 @@ CREATE TABLE Exercises (
     Description NVARCHAR(MAX),
 );
 
-DROP TABLE IF EXISTS UserExercises;
-
 -- Create the UserExercises table to store user-specific exercises
 CREATE TABLE UserExercises (
     UserExerciseID INT PRIMARY KEY IDENTITY,
-    UserID INT FOREIGN KEY REFERENCES Users(UserID),
     ExerciseID INT FOREIGN KEY REFERENCES Exercises(ExerciseID),
-    Sets INT,
-    Reps INT,
-    Weight DECIMAL(5, 2), -- Weight in kilograms
+    WorkoutID INT FOREIGN KEY REFERENCES Workouts(WorkoutID),
+    
+    Amount INT,
+
     Notes NVARCHAR(MAX)
 );
 
 -- Create indexes for foreign keys to optimize query performance
+CREATE INDEX idx_UserExercises_WorkoutID ON UserExercises(WorkoutID);
 CREATE INDEX idx_Workouts_UserID ON Workouts(UserID);
-CREATE INDEX idx_UserExercises_UserID ON UserExercises(UserID);
 CREATE INDEX idx_UserExercises_ExerciseID ON UserExercises(ExerciseID);
