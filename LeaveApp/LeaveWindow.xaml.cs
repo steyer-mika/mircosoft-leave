@@ -1,6 +1,7 @@
 ﻿using Microsoft.Data.SqlClient;
 using root_logic;
 using RootLogic;
+using System.Collections;
 using System.Data;
 using System.Text;
 using System.Windows;
@@ -12,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.ComponentModel;
 
 namespace LeaveApp
 {
@@ -22,11 +24,15 @@ namespace LeaveApp
     {
         LeaveDataSet leaveDataSet;
 
+        private ICollectionView workoutsView;
+
         public MainWindow()
         {
             InitializeComponent();
             
             leaveDataSet = (LeaveDataSet) FindResource("leaveDataSet");
+
+            workoutsView = ((CollectionViewSource) FindResource("workoutsViewSource")).View;
         }
 
     

@@ -1,11 +1,12 @@
 ﻿USE leave;
 
+DELETE FROM Workouts;
+DELETE FROM UserExercises;
+DELETE FROM Exercises;
 DELETE FROM Users;
 
 INSERT INTO Users (UserName, Email, PasswordHash, DateOfBirth, Gender, Height, Weight)
 VALUES ('Steyer Mika', 'mikasteyer9@gmail.com', 'AdminAdmin1!', '2005-05-11', 'Männlich', 1.85, 65);
-
-DELETE FROM Exercises;
 
 INSERT INTO Exercises (ExerciseName, Description)
 VALUES 
@@ -37,3 +38,24 @@ VALUES
     ('Kettlebell-Schwung', 'Eine dynamische Übung, bei der eine Person eine Kettlebell zwischen ihren Beinen schwingt und dann ihre Hüften kräftig nach vorne drückt, um sie auf Schulterhöhe zu schwingen.'),
     ('Burpees', 'Eine Ganzkörperübung, bei der eine Person in einer stehenden Position beginnt, sich in eine Kniebeugenposition begibt, ihre Füße in eine Liegestützposition kickt, eine Liegestütz ausführt, zur Kniebeugenposition zurückkehrt und dann hochspringt.'),
     ('Boxsprünge', 'Eine plyometrische Übung, bei der eine Person auf und von einer erhöhten Plattform (Box) springt, um sich auf explosive Beinkraft zu konzentrieren.');
+
+INSERT INTO UserExercises (ExerciseID, WorkoutID, Amount, Notes)
+VALUES 
+    (1, 1, 45, '3 Sätze mit je 15 Wiederholungen durchgeführt'),
+    (2, 1, 48, '4 Sätze mit je 12 Wiederholungen mit Hanteln durchgeführt'),
+    (3, 1, 0, 'Unterstützt mit Widerstandsbändern'),
+    (10, 2, 60, '3 Sätze mit je 20 Wiederholungen'),
+    (12, 2, 50, 'Moderates Gewicht verwendet'),
+    (21, 3, 30, 'Fokus auf korrekte Ausführung und kontrollierte Bewegung'),
+    (22, 3, 40, 'Schwereres Gewicht für das Krafttraining verwendet'),
+    (29, 4, 60, 'Intervalltraining mit hoher Intensität'),
+    (30, 4, 20, 'Kettlebell mit korrekter Technik verwendet');
+
+
+-- Inserting sample workout data for the user
+INSERT INTO Workouts (UserID, WorkoutDate, DurationMinutes, CaloriesBurned, Notes)
+VALUES 
+    (1, '2024-02-10', 60, 300, 'Kardio- und Krafttrainingseinheit'),
+    (1, '2024-02-08', 45, 250, 'Training für den oberen Körper'),
+    (1, '2024-02-06', 30, 200, 'Beintraining'),
+    (1, '2024-02-04', 40, 220, 'Core-Training');
