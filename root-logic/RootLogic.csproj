@@ -11,4 +11,19 @@
     <PackageReference Include="Microsoft.Data.SqlClient" Version="5.1.5" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Compile Update="LeaveDataSet.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>LeaveDataSet.xsd</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="LeaveDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>LeaveDataSet.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+
 </Project>
