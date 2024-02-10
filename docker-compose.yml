@@ -1,0 +1,22 @@
+version: '3.7'
+
+services:
+  sql-server:
+    image: mcr.microsoft.com/mssql/server:2019-latest
+    container_name: sql-server
+    environment:
+      SA_PASSWORD: "AdminAdmin1!"
+      ACCEPT_EULA: "Y"
+      MSSQL_PID: "Developer"
+    ports:
+      - "1433:1433"
+    volumes:
+      - sql-data:/var/opt/mssql
+    networks:
+      - sql-net
+
+volumes:
+  sql-data:
+
+networks:
+  sql-net:

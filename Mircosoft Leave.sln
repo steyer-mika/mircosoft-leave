@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.8.34525.116
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RootLogic", "root-logic\RootLogic.csproj", "{7F0CCDA7-FF0E-4CF9-966A-F9CDD3D2099F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RootLogic", "root-logic\RootLogic.csproj", "{7F0CCDA7-FF0E-4CF9-966A-F9CDD3D2099F}"
+EndProject
+Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "Database", "Database\Database.sqlproj", "{11D4CFB6-400B-44EA-AC94-C0B902343510}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,12 @@ Global
 		{7F0CCDA7-FF0E-4CF9-966A-F9CDD3D2099F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7F0CCDA7-FF0E-4CF9-966A-F9CDD3D2099F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7F0CCDA7-FF0E-4CF9-966A-F9CDD3D2099F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{11D4CFB6-400B-44EA-AC94-C0B902343510}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{11D4CFB6-400B-44EA-AC94-C0B902343510}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{11D4CFB6-400B-44EA-AC94-C0B902343510}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{11D4CFB6-400B-44EA-AC94-C0B902343510}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{11D4CFB6-400B-44EA-AC94-C0B902343510}.Release|Any CPU.Build.0 = Release|Any CPU
+		{11D4CFB6-400B-44EA-AC94-C0B902343510}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
